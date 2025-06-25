@@ -1,0 +1,17 @@
+.skeleton {
+  background-color: #e5e7eb;
+  border-radius: 6px;
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  width: 100%;
+  height: 1.2rem; /* Default height */
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

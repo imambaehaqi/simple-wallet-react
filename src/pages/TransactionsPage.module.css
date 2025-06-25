@@ -1,0 +1,45 @@
+.pageContainer {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.error {
+  background-color: #fee2e2;
+  color: var(--danger-color);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: var(--card-background);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.pagination span {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.paginationButtons {
+  display: flex;
+  gap: 0.5rem;
+}

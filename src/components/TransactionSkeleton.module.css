@@ -1,0 +1,14 @@
+/* ... existing styles ... */
+.skeletonTitle {
+  height: 1.5rem;
+  width: 60%;
+  margin-bottom: 0.5rem;
+}
+.skeletonSubtitle {
+  height: 1rem;
+  width: 40%;
+}
+.skeletonAmount {
+  height: 1.75rem;
+  width: 100px;
+}

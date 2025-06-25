@@ -1,0 +1,66 @@
+/* ... existing styles ... */
+.transactionItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.mainInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+
+.actionButton {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: #6b7280;
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.actionButton:hover:not(:disabled) {
+  background-color: #f3f4f6;
+  color: var(--text-color);
+}
+
+.deleteButton:hover:not(:disabled) {
+  background-color: #fee2e2;
+  color: var(--danger-color);
+  border-color: #fecaca;
+}
+
+.actionButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ... all existing styles ... */
+
+/* -- ADD THESE STYLES -- */
+.skeletonTitle {
+  height: 1.5rem;
+  width: 60%;
+  margin-bottom: 0.5rem;
+}
+.skeletonSubtitle {
+  height: 1rem;
+  width: 40%;
+}
+.skeletonAmount {
+  height: 1.75rem;
+  width: 100px;
+}

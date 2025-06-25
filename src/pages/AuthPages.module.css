@@ -1,0 +1,62 @@
+.authContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--background-color);
+}
+
+.authBox {
+  background-color: var(--card-background);
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  width: 100%;
+  max-width: 420px;
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.authBox form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.redirectText {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.redirectText a {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.redirectText a:hover {
+  text-decoration: underline;
+}
+
+.helpText {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: -1rem; /* Tarik sedikit ke atas agar lebih dekat dengan input password */
+  display: block;
+}
