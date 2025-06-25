@@ -110,3 +110,13 @@
   border-radius: 8px;
   color: #6b7280;
 }
+
+/* ... all existing styles ... */
+
+/* -- ADD THIS STYLE -- */
+.balanceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}

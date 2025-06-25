@@ -4,22 +4,16 @@ import * as transactionService from "../api/transactionService";
 
 // Component Imports
 import Filters from "../components/Filters";
-import CategoryChart from "../components/CategoryChart"; // <-- IMPORT CHART
+import CategoryChart from "../components/CategoryChart";
+import TopUpModal from "../components/TopUpModal"; // <-- IMPORT MODAL BARU
 import Button from "../components/common/Button/Button";
 import styles from "./DashboardPage.module.css";
-
-// Helper
-const formatCurrency = (amount) => {
-  return new Intl.NumberFormat("id-ID", {
-    style: "currency",
-    currency: "IDR",
-    minimumFractionDigits: 0,
-  }).format(amount);
-};
+import { formatCurrency } from "../utils/formatters"; // <-- IMPORT FORMATTER
 
 const DashboardPage = () => {
   const [filters, setFilters] = useState({ startDate: "", endDate: "" });
-  const [chartData, setChartData] = useState([]); // <-- State baru untuk data chart
+  const [chartData, setChartData] = useState([]);
+  const [isTopUpModalOpen, setIsTopUpModalOpen] = useState(false); // <-- State untuk modal
 
   const {
     data: summary,
@@ -39,11 +33,10 @@ const DashboardPage = () => {
     loadSummary();
   }, [loadSummary]);
 
-  // useEffect untuk transformasi data saat `summary` berubah
   useEffect(() => {
     if (summary?.categoryBreakdown) {
       const transformedData = summary.categoryBreakdown.map((cat) => ({
-        name: cat.category.charAt(0).toUpperCase() + cat.category.slice(1), // Capitalize
+        name: cat.category.charAt(0).toUpperCase() + cat.category.slice(1),
         Income: cat.income,
         Expense: cat.expense,
       }));
@@ -53,6 +46,11 @@ const DashboardPage = () => {
 
   const handleFilterChange = (newFilters) => setFilters(newFilters);
   const clearFilters = () => setFilters({ startDate: "", endDate: "" });
+
+  // Fungsi ini akan dipanggil oleh TopUpModal setelah sukses
+  const handleTopUpSuccess = () => {
+    loadSummary(); // Muat ulang data dashboard untuk menampilkan saldo baru
+  };
 
   return (
     <div className={styles.dashboard}>
@@ -82,9 +80,19 @@ const DashboardPage = () => {
         <>
           <div className={styles.summaryGrid}>
             <div className={`${styles.card} ${styles.balance}`}>
-              <h3>Current Balance</h3>
+              <div className={styles.balanceHeader}>
+                <h3>Current Balance</h3>
+                {/* --- TOMBOL TOP UP --- */}
+                <Button
+                  variant="primary"
+                  onClick={() => setIsTopUpModalOpen(true)}
+                >
+                  Top Up
+                </Button>
+              </div>
               <p>{formatCurrency(summary.currentBalance)}</p>
             </div>
+            {/* ... card lainnya ... */}
             <div className={`${styles.card} ${styles.income}`}>
               <h3>Total Income (Filtered)</h3>
               <p>{formatCurrency(summary.totalIncome)}</p>
@@ -105,7 +113,6 @@ const DashboardPage = () => {
             </div>
           </div>
 
-          {/* --- Render Chart di sini --- */}
           <CategoryChart data={chartData} />
 
           {chartData.length === 0 && (
@@ -117,6 +124,13 @@ const DashboardPage = () => {
           )}
         </>
       )}
+
+      {/* --- RENDER MODAL DI SINI --- */}
+      <TopUpModal
+        isOpen={isTopUpModalOpen}
+        onClose={() => setIsTopUpModalOpen(false)}
+        onSuccess={handleTopUpSuccess}
+      />
     </div>
   );
 };
